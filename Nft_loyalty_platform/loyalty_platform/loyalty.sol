@@ -62,13 +62,4 @@ contract LoyaltyNFT is ERC721, Ownable {
     function setBaseURI(string memory newBaseTokenURI) external onlyOwner {
         baseTokenURI = newBaseTokenURI;
     }
-
-    // Implement reward redemption logic here
-    function redeemReward(uint256 tokenId) external {
-        require(_exists(tokenId), "Token does not exist");
-        require(ownerOf(tokenId) == msg.sender, "You do not own this token");
-        require(!redeemedRewards[tokenId], "Reward already redeemed");
-
-        redeemedRewards[tokenId] = true;
-    }
 }
